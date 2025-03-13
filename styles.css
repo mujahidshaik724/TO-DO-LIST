@@ -1,0 +1,159 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  
+}
+header,
+aside,
+main,
+footer {
+  /* padding: 10px; */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+header {
+  grid-area: header;
+  background-color: #4caf50;
+  color: white;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header>img{
+    /* margin-top: 8px; */
+    
+    height: 6vh;
+    width: 4vw;
+}
+aside {
+  grid-area: aside;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-btn-container {
+  max-height: 50vh; /* Set a maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; /* Ensures it spans the sidebar width */
+  padding: 10px;
+}
+
+/* Custom scrollbar styles (Optional) */
+.project-btn-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.project-btn-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.project-btn-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
+
+
+
+
+.all-tasks-btn{
+    text-align: center;
+    height: 5vh;
+    width: 20vw;
+}
+.add-project-btn{
+    height: 5vh;
+    width: 20vw;
+}
+.project-btn{
+    margin: 5px;
+    height: 5vh;
+    width: 17vw;
+}
+main {
+  grid-area: main;
+  background-color: #ffffff;
+}
+footer {
+  grid-area: footer;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+ul>li{
+    list-style: none;
+}
+
+/* project card styling */
+.project-card, .popup {
+    border: 2px solid #4CAF50;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.add-project-btn {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.add-project-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+/* project form  */
+
+.project-card {
+  height: 30%;
+  width: 200px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  gap: 5px;
+}
+.project-form input {
+  width: auto;
+  padding: 5px;
+  font-size: 16px;
+}
+.confirm-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+}
