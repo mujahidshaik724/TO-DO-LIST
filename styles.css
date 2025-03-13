@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -13,7 +13,7 @@ body {
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  
+  overflow-x: hidden;
 }
 header,
 aside,
@@ -31,11 +31,11 @@ header {
   justify-content: center;
   align-items: center;
 }
-header>img{
-    /* margin-top: 8px; */
-    
-    height: 6vh;
-    width: 4vw;
+header > img {
+  /* margin-top: 8px; */
+
+  height: 6vh;
+  width: 4vw;
 }
 aside {
   grid-area: aside;
@@ -46,8 +46,19 @@ aside {
   align-items: center;
   gap: 10px;
 }
+.projects-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
 
 .project-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-height: 50vh; /* Set a maximum height for scrolling */
   overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -69,29 +80,187 @@ aside {
   background-color: #555;
 }
 
-
-
-
-
-
-.all-tasks-btn{
-    text-align: center;
-    height: 5vh;
-    width: 20vw;
+.alltask {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
 }
-.add-project-btn{
-    height: 5vh;
-    width: 20vw;
+.all-tasks-btn {
+  text-align: center;
+  height: 5vh;
+  width: 20vw;
 }
-.project-btn{
-    margin: 5px;
-    height: 5vh;
-    width: 17vw;
+.add-project-btn {
+  height: 5vh;
+  width: 20vw;
+  border-radius: 7px;
 }
+
 main {
   grid-area: main;
+  
+
   background-color: #ffffff;
 }
+main h2 {
+  font-size: 50px;
+}
+.main-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.add-todo-btn {
+  background-color: #4caf50;
+  color: white;
+  height: 40px;
+  width: 150px;
+  border: 1px solid #4caf50;
+  border-radius: 10px;
+}
+.form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-container>div>#todo-name{
+  width: 70%;
+}
+
+#todo-start,#todo-end{
+  width: 30%;
+}
+.todo-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
+  left: 85px;
+  padding: 5px;
+  
+}
+.hidden {
+  display: none;
+}
+
+.visible {
+  width: 80%;
+  display: block; /* Makes the form visible */
+  background-color: rgb(89, 195, 146); /* Add your preferred background color */
+  padding: 20px; /* Optional: for spacing */
+  border-radius: 8px; /* Optional: for better design */
+  box-shadow: 0 4px 8px rgba(20, 54, 35, 0.2); /* Optional: for an elevated effect */
+}
+.date{
+  display: flex;
+  justify-content: flex-start;
+  gap: 3px;
+}
+.date>div>input{
+  width: 60%;
+}
+
+.form-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.form-buttons button {
+  height: 30px;
+  width: 60px;
+  border-radius: 10px;
+  padding: 2px;
+}
+.cancel-btn {
+  background-color: rgb(223, 78, 38);
+  color: white;
+  border: 1px solid rgb(223, 78, 38);
+}
+.card-content {
+  width: 80%;
+}
+
+/* Todo Card */
+.todo-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.todo-card {
+  width: 70%;
+  background-color: rgb(89, 195, 146); /* Add your preferred background color */
+  padding: 20px; /* Optional: for spacing */
+  border-radius: 8px; /* Optional: for better design */
+  box-shadow: 0 4px 8px rgba(20, 54, 35, 0.2); /* Optional: for an elevated effect */
+  display: flex;
+}
+
+.project-form{
+  display: flex;
+  flex-direction: column;
+  background-color:rgb(105, 176, 93) ;
+  gap: 5px;
+border: 2px solid rgb(105, 176, 93);
+border-radius: 10px;
+padding: 10px;
+}
+.custom-form
+  {
+    display: flex;
+    /* flex-direction: column; */
+    background-color:rgb(105, 176, 93) ;
+    gap: 5px;
+  border: 2px solid rgb(105, 176, 93);
+  border-radius: 10px;
+  padding: 10px;
+  }
+  .custom-form>input{
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid white;
+  }
+.custom-form>.confirm-btn{
+  border-radius: 10px;
+}
+.button-container>button{
+  height: 20px;
+  width: 50px;
+  border-radius: 5px;
+  color: white;
+}
+.project-form>input{
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.card-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card-btns button {
+  border-radius: 10px;
+  height: 27px;
+  width: 60px;
+}
+.delete-btn {
+  background-color: rgb(223, 78, 38);
+  color: white;
+  border: 1px solid rgb(223, 78, 38);
+}
+.edit-btn {
+  border: 1px solid #28a745;
+  background-color: #28a745;
+}
+
 footer {
   grid-area: footer;
   background-color: #333;
@@ -99,39 +268,36 @@ footer {
   text-align: center;
 }
 
-ul>li{
-    list-style: none;
+ul > li {
+  list-style: none;
 }
 
 /* project card styling */
-.project-card, .popup {
-    border: 2px solid #4CAF50;
-    padding: 10px;
-    border-radius: 8px;
-    margin: 5px 0;
+
+.project-card,
+.popup {
+  border: 2px solid #4caf50;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 5px 0;
 }
 
 .buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .add-project-btn {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .add-project-btn:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
-
-
-
-
-
 
 /* project form  */
 
@@ -142,7 +308,7 @@ ul>li{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
   gap: 5px;
 }
 .project-form input {

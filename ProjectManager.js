@@ -22,22 +22,45 @@ const ProjectManager = (containerSelector, addBtnSelector, mainContainerSelector
         Object.keys(projects).forEach(addProjectCard);
     };
 
+    // const createProjectForm = () => {
+    //     // Prevent multiple forms
+    //     if (formContainer.innerHTML.trim() !== "") return;
+    
+    //     const form = ui.createForm(
+    //         [{ type: "text", placeholder: "Enter project name", className: "project-name-input" }],
+    //         [
+    //             { text: "Confirm", className: "confirm-btn", onClick: saveProject },
+    //             { text: "Cancel", className: "cancel-btn", onClick: () => form.remove() } // Removes the form
+    //         ]
+    //     );
+    
+    //     form.classList.add("project-form");
+    //     formContainer.appendChild(form); // Append the form inside the container
+    // };
+    
     const createProjectForm = () => {
         // Prevent multiple forms
         if (formContainer.innerHTML.trim() !== "") return;
     
-        const form = ui.createForm(
-            [{ type: "text", placeholder: "Enter project name", className: "project-name-input" }],
-            [
-                { text: "Confirm", className: "confirm-btn", onClick: saveProject },
-                { text: "Cancel", className: "cancel-btn", onClick: () => form.remove() } // Removes the form
-            ]
-        );
+        formContainer.innerHTML = `
+            <form class="project-form">
+                <input type="text" placeholder="Enter project name" class="project-name-input">
+                <div class="form-buttons">
+                    <button type="button" class="confirm-btn">Confirm</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        `;
     
-        form.classList.add("project-form");
-        formContainer.appendChild(form); // Append the form inside the container
+        // Add event listeners for the buttons
+        const confirmBtn = formContainer.querySelector(".confirm-btn");
+        const cancelBtn = formContainer.querySelector(".cancel-btn");
+    
+        confirmBtn.addEventListener("click", saveProject);
+        cancelBtn.addEventListener("click", () => {
+            formContainer.innerHTML = ""; // Removes the form by clearing the container
+        });
     };
-    
     
 
     const saveProject = () => {

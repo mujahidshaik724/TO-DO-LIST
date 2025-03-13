@@ -7,9 +7,9 @@ const TodoManager = (mainContainer, projects) => {
 
     const showMainContent = (projectName) => {
         mainContainer.innerHTML = `
-            <h2>${projectName}</h2>
-            <button class="add-todo-btn">Add To-Do</button>
-            <div class="todo-form-container"></div> <!-- New container for the form -->
+           <div class="main-head"> <h2>${projectName}</h2>
+            <button class="add-todo-btn">Add To-Do</button></div>
+            <div class="todo-form-container"></div> <!-- Container for the form -->
             <ul class="todo-list"></ul>
         `;
 
@@ -19,25 +19,39 @@ const TodoManager = (mainContainer, projects) => {
 
     const showTodoForm = (projectName, existingTodo = null, index = null) => {
         if (document.querySelector(".todo-form")) return; // Prevent multiple forms
-
-        const form = ui.createForm(
-            [
-                { type: "text", placeholder: "To-Do Name", className: "todo-name-input", value: existingTodo ? existingTodo.name : "" },
-                { type: "date", className: "todo-start-input", value: existingTodo ? existingTodo.startDate : "" },
-                { type: "date", className: "todo-end-input", value: existingTodo ? existingTodo.endDate : "" },
-                { type: "checkbox", className: "todo-completed-input", checked: existingTodo ? existingTodo.completed : false }
-            ],
-            [
-                { text: existingTodo ? "Update" : "Confirm", className: "confirm-btn", onClick: () => saveTodo(projectName, form, existingTodo, index) },
-                { text: "Cancel", className: "cancel-btn", onClick: () => form.remove() }
-            ]
-        );
-
-        form.classList.add("todo-form");
-
-        // Insert form inside the dedicated container (below the button)
+    
+        const form = document.createElement("form");
+        form.classList.add("todo-form", "visible"); // Add 'visible' class here
+    
+        form.innerHTML = `
+           <div class="form-container"> <div> <label for="todo-name">To-Do Name:</label>
+            <input type="text" id="todo-name" class="todo-name-input" placeholder="To-Do Name" value="${existingTodo ? existingTodo.name : ""}">
+            </div>
+            <div class="date">
+            <label for="todo-start">Start Date:</label>
+            <input type="date" id="todo-start" class="todo-start-input" value="${existingTodo ? existingTodo.startDate : ""}">
+            <label for="todo-end">End Date:</label>
+            <input type="date" id="todo-end" class="todo-end-input" value="${existingTodo ? existingTodo.endDate : ""}">
+            </div>
+            <div>
+            <label for="todo-status">Status:</label>
+            <input type="checkbox" id="todo-status" class="todo-completed-input" ${existingTodo && existingTodo.completed ? "checked" : ""}>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="confirm-btn">${existingTodo ? "Update" : "Confirm"}</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+            </div>
+            </div>
+        `;
+    
+        // Add event listeners for buttons
+        form.querySelector(".confirm-btn").addEventListener("click", () => saveTodo(projectName, form, existingTodo, index));
+        form.querySelector(".cancel-btn").addEventListener("click", () => form.remove());
+    
+        // Append the form to the dedicated container
         document.querySelector(".todo-form-container").appendChild(form);
     };
+    
 
     const saveTodo = (projectName, form, existingTodo = null, index = null) => {
         const todo = {
@@ -66,11 +80,12 @@ const TodoManager = (mainContainer, projects) => {
         const todoCard = document.createElement("li");
         todoCard.classList.add("todo-card");
         todoCard.innerHTML = `
-            <span><strong>${todo.name}</strong></span>
-            <p>Start: ${todo.startDate || "N/A"} | End: ${todo.endDate || "N/A"}</p>
-            <p>Status: ${todo.completed ? "✅ Completed" : "⏳ Pending"}</p>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
+           <div class="card-content"> <span><strong>${todo.name}</strong></span>
+            <p>Start Date: ${todo.startDate || "N/A"}</p>
+            <p>End Date: ${todo.endDate || "N/A"}</p>
+            <p>Status: ${todo.completed ? "✅ Completed" : "⏳ Pending"}</p></div>
+            <div class="card-btns"><button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button></div>
         `;
 
         document.querySelector(".todo-list").appendChild(todoCard);
